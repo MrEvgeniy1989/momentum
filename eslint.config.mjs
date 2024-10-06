@@ -19,5 +19,6 @@ export default antfu({
       case: "kebabCase",
       ignore: ["README.md"],
     }],
+    "@typescript-eslint/consistent-type-definitions": ["error", "type"],
   },
 });

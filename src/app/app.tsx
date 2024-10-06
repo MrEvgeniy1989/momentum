@@ -1,3 +1,9 @@
+import { MainPage } from "@/pages/MainPage/ui/main-page";
+
 export function App() {
-  return <div>Hello</div>;
+  return (
+    <div>
+      <MainPage />
+    </div>
+  );
 }
