@@ -1,20 +1,10 @@
-import type { FC } from "react";
-
-import { useEffect, useState } from "react";
-
 import s from "./time.module.scss";
 
-export const Time: FC = () => {
-  const [time, setTime] = useState<Date>(new Date());
+type Props = {
+  time: Date;
+};
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(timer);
-  }, []);
-
+export function Time({ time }: Props) {
   const formatTime = (date: Date): string[] => {
     const hours = date.getHours().toString().padStart(2, "0");
     const minutes = date.getMinutes().toString().padStart(2, "0");
@@ -33,4 +23,4 @@ export const Time: FC = () => {
       <div className={s.timeBlock}>{minutes}</div>
     </div>
   );
-};
+}

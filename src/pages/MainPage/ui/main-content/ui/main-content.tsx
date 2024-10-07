@@ -2,10 +2,14 @@ import { Time } from "@/entities/time/ui/time";
 
 import s from "./main-content.module.scss";
 
-export function MainContent() {
+type Props = {
+  time: Date;
+};
+
+export function MainContent({ time }: Props) {
   return (
     <section className={s.mainContent}>
-      <Time />
+      <Time time={time} />
     </section>
   );
 }
