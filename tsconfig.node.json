@@ -14,9 +14,10 @@
     "noFallthroughCasesInSwitch": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "composite": true
   },
   "include": ["vite.config.ts"]
 }

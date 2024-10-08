@@ -1,11 +1,14 @@
 {
   "name": "momentum",
+  "homepage": "https://mrevgeniy1989.github.io/momentum",
   "type": "module",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "predeploy": "pnpm run build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint src --fix && stylelint --fix src/{,*/}*.{scss,css} --allow-empty-input",
     "preview": "vite preview"
   },
@@ -26,6 +29,7 @@
     "eslint-plugin-format": "^0.1.2",
     "eslint-plugin-react-hooks": "5.1.0-rc-fb9a90fa48-20240614",
     "eslint-plugin-react-refresh": "^0.4.12",
+    "gh-pages": "^6.1.1",
     "globals": "^15.9.0",
     "sass": "^1.79.4",
     "stylelint": "^16.9.0",
