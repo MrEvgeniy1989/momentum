@@ -1,0 +1,12 @@
+.menuTrigger {
+  cursor: pointer;
+}
+
+.editLocationButton {
+  cursor: pointer;
+  padding: 5px;
+
+  &:hover {
+    background-color: var(--color-dark-100);
+  }
+}

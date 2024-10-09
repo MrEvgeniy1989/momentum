@@ -1,0 +1,117 @@
+.buttonTrigger {
+  cursor: pointer;
+  user-select: none;
+
+  .temperatureBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin: -10px;
+
+    white-space: nowrap;
+
+    .temperature {
+      display: block;
+      font-size: 26px;
+    }
+  }
+
+  .location {
+    font-size: 13px;
+  }
+
+}
+
+.dropdownMainContent {
+  width: 460px;
+  height: 208px;
+  opacity: 0.9;
+  border-radius: 5px;
+
+  .dropdownMain {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .dropdownMainHeader {
+      display: flex;
+      align-items: start;
+      justify-content: space-between;
+
+      .locationBlock {
+        .locationWrapper {
+          display: flex;
+          column-gap: 10px;
+          align-items: center;
+
+          .pencilIconWrapper {
+            cursor: pointer;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            width: 24px;
+            height: 24px;
+
+            opacity: 0;
+            border-radius: 50%;
+
+            transition: opacity 0.3s ease, background-color 0.3s ease;
+
+            &:hover {
+              background-color: var(--color-dark-100);
+            }
+          }
+        }
+
+        .conditions {
+          color: var(--color-light-900);
+        }
+
+        &:hover {
+          .locationWrapper .pencilIconWrapper {
+            opacity: 1;
+          }
+        }
+      }
+    }
+
+    .mainBody {
+      display: flex;
+      flex-wrap: nowrap;
+      column-gap: 80px;
+      align-items: center;
+
+      .mainBodyTemperatureBlock {
+        display: flex;
+        align-items: center;
+
+        & svg {
+          color: var(--color-light-900);
+        }
+
+        .mainBodyTemperature {
+          font-size: 60px;
+        }
+      }
+
+      .mainBodyTemperatureDetailsBlock {
+        font-size: 14px;
+
+        .mainBodyTemperatureDetails{
+          display: flex;
+          column-gap: 10px;
+
+          .mainBodyTemperatureDetailsTitle {
+            display: inline-flex;
+            column-gap: 5px;
+            align-items: center;
+            opacity: 0.6;
+          }
+        }
+      }
+    }
+  }
+}
