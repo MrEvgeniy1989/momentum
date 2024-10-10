@@ -1,0 +1,18 @@
+.task {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 3px 0;
+
+  .checkboxAndSpan {
+    .title {
+      user-select: none;
+    }
+
+    .completed {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+  }
+}
+
