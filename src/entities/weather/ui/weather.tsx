@@ -1,4 +1,3 @@
-import { CloudyIcon } from "@/assets/icons/cloudy-icon";
 import { PencilIcon } from "@/assets/icons/pencil-icon";
 import { SoutheastArrowIcon } from "@/assets/icons/southeast-arrow-icon";
 import {
@@ -8,20 +7,30 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/common/components/ui/dropdown";
+import { useCity } from "@/common/hooks/use-city";
+import { useWeather } from "@/common/hooks/use-weather";
 import { EditLocationMenu } from "@/entities/weather/ui/edit-location-menu/edit-location-menu";
 
 import s from "./weather.module.scss";
 
 export function Weather() {
+  const { city } = useCity();
+  // console.log(city);
+  const { description, icon, temperature, feelsLike, recentRain, wind } = useWeather();
+  // console.log(city, temperature, feelsLike, recentRain, wind, error);
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <button type="button" className={s.buttonTrigger}>
           <div className={s.temperatureBlock}>
-            <CloudyIcon className={s.cloudyIcon} />
-            <span className={s.temperature}>8°</span>
+            {icon}
+            <span className={s.temperature}>
+              {temperature}
+              °
+            </span>
           </div>
-          <span className={s.location}>Smolensk</span>
+          <span className={s.location}>{city}</span>
         </button>
       </DropdownMenuTrigger>
 
@@ -31,35 +40,43 @@ export function Weather() {
             <div className={s.dropdownMainHeader}>
               <div className={s.locationBlock}>
                 <div className={s.locationWrapper}>
-                  <div className={s.location}>Smolensk</div>
+                  <div className={s.location}>{city}</div>
                   <div className={s.pencilIconWrapper}>
                     <PencilIcon className={s.pencilIcon} />
                   </div>
                 </div>
-                <div className={s.conditions}>Cloudy</div>
+                <div className={s.conditions}>{description}</div>
               </div>
               <EditLocationMenu />
             </div>
             <div className={s.mainBody}>
               <div className={s.mainBodyTemperatureBlock}>
-                <CloudyIcon width={100} height={100} />
-                <span className={s.mainBodyTemperature}>8°</span>
+                {icon}
+                <span className={s.mainBodyTemperature}>
+                  {temperature}
+                  °
+                </span>
               </div>
               <div className={s.mainBodyTemperatureDetailsBlock}>
                 <div className={s.mainBodyTemperatureDetails}>
                   <span className={s.mainBodyTemperatureDetailsTitle}>Feels like </span>
-                  11°
+                  {feelsLike}
+                  °
                 </div>
                 <div className={s.mainBodyTemperatureDetails}>
                   <span className={s.mainBodyTemperatureDetailsTitle}>Recent rain </span>
-                  0 mm
+                  {recentRain}
+                  {" "}
+                  mm
                 </div>
                 <div className={s.mainBodyTemperatureDetails}>
                   <span className={s.mainBodyTemperatureDetailsTitle}>
                     Wind
                     <SoutheastArrowIcon />
                   </span>
-                  7 km/h
+                  {wind}
+                  {" "}
+                  km/h
                 </div>
               </div>
             </div>
