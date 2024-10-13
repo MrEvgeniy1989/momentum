@@ -1,7 +1,3 @@
 export function FocusedToday() {
-  return (
-    <div>
-      FocusedToday
-    </div>
-  );
+  return <div>FocusedToday</div>;
 }

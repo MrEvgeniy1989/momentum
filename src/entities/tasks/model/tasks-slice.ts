@@ -4,7 +4,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import type { TaskType } from "@/entities/tasks/model/tasks-api.types";
 
-const initialState: TaskType[] = JSON.parse(localStorage.getItem("tasks") || "[]");
+const initialState: TaskType[] = JSON.parse(
+  localStorage.getItem("tasks") || "[]",
+);
 
 const tasksSlice = createSlice({
   name: "tasks",
@@ -34,5 +36,6 @@ const tasksSlice = createSlice({
   },
 });
 
-export const { addTask, toggleTask, deleteTask, deleteCompletedTasks } = tasksSlice.actions;
+export const { addTask, toggleTask, deleteTask, deleteCompletedTasks }
+  = tasksSlice.actions;
 export const tasksReducer = tasksSlice.reducer;

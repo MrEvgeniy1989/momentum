@@ -15,7 +15,8 @@ const DEFAULT_LOCATION: LocationInfo = {
 };
 
 export function useWeather() {
-  const [locationInfo, setLocationInfo] = useState<LocationInfo>(DEFAULT_LOCATION);
+  const [locationInfo, setLocationInfo]
+    = useState<LocationInfo>(DEFAULT_LOCATION);
   const [city, setCity] = useState<string>("Krasnodar");
 
   useEffect(() => {
@@ -28,7 +29,9 @@ export function useWeather() {
     }
 
     if (!navigator.geolocation) {
-      toast.error("Geolocation is not supported by this browser.", { position: "top-center" });
+      toast.error("Geolocation is not supported by this browser.", {
+        position: "top-center",
+      });
       return;
     }
 
@@ -40,7 +43,8 @@ export function useWeather() {
         };
         setLocationInfo(newLocation);
       },
-      () => toast.error("Geolocation permission denied, using default location."),
+      () =>
+        toast.error("Geolocation permission denied, using default location."),
     );
   }, []);
 
@@ -50,16 +54,23 @@ export function useWeather() {
     }
   }, [city]);
 
-  const updateCity = useCallback((newCity: string) => {
-    if (newCity !== city) {
-      setCity(newCity);
-      localStorage.setItem("weatherCity", newCity);
-    }
-  }, [city]);
+  const updateCity = useCallback(
+    (newCity: string) => {
+      if (newCity !== city) {
+        setCity(newCity);
+        localStorage.setItem("weatherCity", newCity);
+      }
+    },
+    [city],
+  );
 
   const { data: fetchedCity, isLoading: isCityLoading } = useQuery({
     queryKey: ["city", locationInfo.latitude, locationInfo.longitude],
-    queryFn: async () => await weatherApi.getCityByCoordinates(locationInfo.latitude, locationInfo.longitude),
+    queryFn: async () =>
+      await weatherApi.getCityByCoordinates(
+        locationInfo.latitude,
+        locationInfo.longitude,
+      ),
     staleTime: 15 * 60 * 1000,
     enabled: !!locationInfo.latitude && !!locationInfo.longitude,
   });
@@ -70,11 +81,23 @@ export function useWeather() {
     }
   }, [fetchedCity, updateCity]);
 
-  const { data: weather, isLoading: isWeatherLoading, error: weatherError } = useQuery({
+  const {
+    data: weather,
+    isLoading: isWeatherLoading,
+    error: weatherError,
+  } = useQuery({
     queryKey: ["weather", locationInfo],
-    queryFn: async () => await weatherApi.fetchWeatherByCoords(locationInfo.latitude, locationInfo.longitude),
+    queryFn: async () =>
+      await weatherApi.fetchWeatherByCoords(
+        locationInfo.latitude,
+        locationInfo.longitude,
+      ),
     staleTime: 15 * 60 * 1000,
-    enabled: !!city && !!locationInfo.latitude && !!locationInfo.longitude && !!fetchedCity,
+    enabled:
+      !!city
+      && !!locationInfo.latitude
+      && !!locationInfo.longitude
+      && !!fetchedCity,
   });
 
   if (weatherError) {

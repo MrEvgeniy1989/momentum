@@ -27,7 +27,12 @@ export function Task({ task }: TaskProps) {
           checked={task.isDone}
           onChange={handleToggleTask}
         />
-        <span className={clsx(s.title, task.isDone && s.completed)} onClick={handleToggleTask}>{task.title}</span>
+        <span
+          className={clsx(s.title, task.isDone && s.completed)}
+          onClick={handleToggleTask}
+        >
+          {task.title}
+        </span>
       </div>
       <button
         className={s.deleteButton}

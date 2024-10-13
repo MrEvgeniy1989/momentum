@@ -21,16 +21,19 @@ type WeatherData = {
 
 export const weatherApi = {
   async getCityByCoordinates(latitude: number, longitude: number) {
-    const response = await axios.get<NominatimResponse>("https://nominatim.openstreetmap.org/reverse", {
-      params: {
-        format: "json",
-        lat: latitude,
-        lon: longitude,
+    const response = await axios.get<NominatimResponse>(
+      "https://nominatim.openstreetmap.org/reverse",
+      {
+        params: {
+          format: "json",
+          lat: latitude,
+          lon: longitude,
+        },
+        headers: {
+          "accept-language": "en-US", // Укажите нужный код языка
+        },
       },
-      headers: {
-        "accept-language": "en-US", // Укажите нужный код языка
-      },
-    });
+    );
 
     if (response.data && response.data.address && response.data.address.city) {
       return response.data.address.city;
@@ -41,7 +44,9 @@ export const weatherApi = {
   },
 
   async fetchWeatherByCoords(latitude: number, longitude: number) {
-    const response = await axios.get<WeatherData>(`${BASE_URL}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m`);
+    const response = await axios.get<WeatherData>(
+      `${BASE_URL}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m`,
+    );
     return response.data;
   },
 };

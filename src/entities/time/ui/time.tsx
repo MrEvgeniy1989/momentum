@@ -14,7 +14,9 @@ export function Time({ time }: Props) {
 
   const formatDate = (date: Date): string => {
     const day = date.toLocaleDateString("ru-RU", { day: "2-digit" });
-    const month = date.toLocaleDateString("ru-RU", { day: "2-digit", month: "long" }).split(" ")[1];
+    const month = date
+      .toLocaleDateString("ru-RU", { day: "2-digit", month: "long" })
+      .split(" ")[1];
     const weekday = date.toLocaleDateString("ru-RU", { weekday: "long" });
     return `${day} ${month}, ${weekday}`;
   };

@@ -1,7 +1,3 @@
 export function Links() {
-  return (
-    <div>
-      Links
-    </div>
-  );
+  return <div>Links</div>;
 }

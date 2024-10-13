@@ -21,7 +21,16 @@ type DropdownContentProps = {
   wind: number;
 };
 
-export function DropdownContent({ city, description, icon, temperature, feelsLike, recentRain, wind_direction_10m, wind }: DropdownContentProps) {
+export function DropdownContent({
+  city,
+  description,
+  icon,
+  temperature,
+  feelsLike,
+  recentRain,
+  wind_direction_10m,
+  wind,
+}: DropdownContentProps) {
   const onCLickEditCityHandler = useCallback(() => {
     toast.warn("Данная функция находится в разработке");
   }, []);
@@ -33,7 +42,10 @@ export function DropdownContent({ city, description, icon, temperature, feelsLik
           <div className={s.locationWrapper}>
             <div className={s.location}>{city}</div>
             <div className={s.pencilIconWrapper}>
-              <PencilIcon className={s.pencilIcon} onClick={onCLickEditCityHandler} />
+              <PencilIcon
+                className={s.pencilIcon}
+                onClick={onCLickEditCityHandler}
+              />
             </div>
           </div>
           <div className={s.conditions}>{description}</div>
@@ -50,12 +62,18 @@ export function DropdownContent({ city, description, icon, temperature, feelsLik
         </div>
         <div className={s.mainBodyTemperatureDetailsBlock}>
           <div className={s.mainBodyTemperatureDetails}>
-            <span className={s.mainBodyTemperatureDetailsTitle}>Feels like </span>
+            <span className={s.mainBodyTemperatureDetailsTitle}>
+              Feels like
+              {" "}
+            </span>
             {feelsLike}
             °
           </div>
           <div className={s.mainBodyTemperatureDetails}>
-            <span className={s.mainBodyTemperatureDetailsTitle}>Recent rain </span>
+            <span className={s.mainBodyTemperatureDetailsTitle}>
+              Recent rain
+              {" "}
+            </span>
             {recentRain}
             {" "}
             mm
@@ -63,7 +81,9 @@ export function DropdownContent({ city, description, icon, temperature, feelsLik
           <div className={s.mainBodyTemperatureDetails}>
             <span className={s.mainBodyTemperatureDetailsTitle}>
               Wind
-              <SoutheastArrowIcon style={{ transform: `rotate(${wind_direction_10m}deg)` }} />
+              <SoutheastArrowIcon
+                style={{ transform: `rotate(${wind_direction_10m}deg)` }}
+              />
             </span>
             {wind}
             {" "}

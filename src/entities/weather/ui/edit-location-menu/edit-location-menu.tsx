@@ -10,18 +10,27 @@ type EditLocationMenuProps = {
   onCLickEditCityHandler: () => void;
 };
 
-export function EditLocationMenu({ onCLickEditCityHandler }: EditLocationMenuProps) {
+export function EditLocationMenu({
+  onCLickEditCityHandler,
+}: EditLocationMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button type="button" className={s.menuTrigger}>...</button>
+        <button type="button" className={s.menuTrigger}>
+          ...
+        </button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className={s.dropdownEditLocationContent}>
         <DropdownMenuItem>
-          <button type="button" className={s.editLocationButton} onClick={onCLickEditCityHandler}>Edit Location</button>
+          <button
+            type="button"
+            className={s.editLocationButton}
+            onClick={onCLickEditCityHandler}
+          >
+            Edit Location
+          </button>
         </DropdownMenuItem>
-
       </DropdownMenuContent>
     </DropdownMenu>
   );

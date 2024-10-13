@@ -14,7 +14,10 @@ import {
 } from "@/common/components/ui/dropdown";
 import { useAppDispatch } from "@/common/hooks/use-app-dispatch";
 import { selectorTasks } from "@/entities/tasks/model/tasks-selectors";
-import { addTask, deleteCompletedTasks } from "@/entities/tasks/model/tasks-slice";
+import {
+  addTask,
+  deleteCompletedTasks,
+} from "@/entities/tasks/model/tasks-slice";
 import { Task } from "@/entities/tasks/ui/task/task";
 import s from "@/entities/tasks/ui/tasks.module.scss";
 
@@ -46,11 +49,12 @@ export function Tasks() {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <button type="button" className={s.buttonTrigger}>Tasks</button>
+        <button type="button" className={s.buttonTrigger}>
+          Tasks
+        </button>
       </DropdownMenuTrigger>
 
       <DropdownMenuContent className={s.dropdownContent}>
-
         <div className={s.mainContent}>
           <div className={s.mainContentHeader}>
             <span className={s.mainContentHeaderToday}>Today</span>
@@ -81,7 +85,6 @@ export function Tasks() {
               )
             : (
                 <div className={s.tasks}>
-
                   <ul className={s.tasksList}>
                     {tasks.map((task: TaskType) => (
                       <Task key={task.id} task={task} />
@@ -93,7 +96,7 @@ export function Tasks() {
           {error && <div className={s.errorMessage}>{error}</div>}
 
           <div className={s.mainContentFooter}>
-            {(showInput || (tasks.length > 0)) && (
+            {(showInput || tasks.length > 0) && (
               <div className={s.inputBox}>
                 <input
                   type="text"
@@ -124,7 +127,6 @@ export function Tasks() {
             )}
           </div>
         </div>
-
       </DropdownMenuContent>
     </DropdownMenu>
   );

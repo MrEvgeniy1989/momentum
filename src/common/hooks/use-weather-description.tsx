@@ -20,7 +20,10 @@ type WeatherCondition = {
 
 export function useWeatherDescription(weatherCode: number): WeatherCondition {
   return useMemo(() => {
-    const weatherConditions: Record<number, { description: string; icon: ReactNode }> = {
+    const weatherConditions: Record<
+      number,
+      { description: string; icon: ReactNode }
+    > = {
       0: { description: "Clear sky", icon: <SunnyIcon /> },
       1: { description: "Mainly clear", icon: <SunnyIcon /> },
       2: { description: "Partly cloudy", icon: <CloudyIcon /> },
@@ -47,10 +50,21 @@ export function useWeatherDescription(weatherCode: number): WeatherCondition {
       85: { description: "Slight snow showers", icon: <SnowfallIcon /> },
       86: { description: "Heavy snow showers", icon: <SnowfallHeavyIcon /> },
       95: { description: "Thunderstorm", icon: <ThunderstormIcon /> },
-      96: { description: "Thunderstorm with light hail", icon: <ThunderstormWithLightHailIcon /> },
-      99: { description: "Thunderstorm with heavy hail", icon: <ThunderstormWithHeavyHailIcon /> },
+      96: {
+        description: "Thunderstorm with light hail",
+        icon: <ThunderstormWithLightHailIcon />,
+      },
+      99: {
+        description: "Thunderstorm with heavy hail",
+        icon: <ThunderstormWithHeavyHailIcon />,
+      },
     };
 
-    return weatherConditions[weatherCode] || { description: "Unknown", icon: <CloudyIcon /> };
+    return (
+      weatherConditions[weatherCode] || {
+        description: "Unknown",
+        icon: <CloudyIcon />,
+      }
+    );
   }, [weatherCode]);
 }

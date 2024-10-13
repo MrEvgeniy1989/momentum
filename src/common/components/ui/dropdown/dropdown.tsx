@@ -36,7 +36,13 @@ const DropdownMenuItem = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Item>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item>
 >(({ className, ...props }, ref) => {
-  return <DropdownMenuPrimitive.Item className={clsx(s.item, className)} ref={ref} {...props} />;
+  return (
+    <DropdownMenuPrimitive.Item
+      className={clsx(s.item, className)}
+      ref={ref}
+      {...props}
+    />
+  );
 });
 
 const DropdownMenuSeparator = forwardRef<
@@ -56,7 +62,11 @@ const DropdownMenuLabel = forwardRef<
   ElementRef<typeof DropdownMenuPrimitive.Label>,
   ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Label>
 >(({ className, ...props }, ref) => (
-  <DropdownMenuPrimitive.Label className={clsx(s.label, className)} ref={ref} {...props} />
+  <DropdownMenuPrimitive.Label
+    className={clsx(s.label, className)}
+    ref={ref}
+    {...props}
+  />
 ));
 
 export {

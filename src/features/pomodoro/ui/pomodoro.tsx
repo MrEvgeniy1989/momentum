@@ -1,7 +1,3 @@
 export function Pomodoro() {
-  return (
-    <div>
-      Pomodoro
-    </div>
-  );
+  return <div>Pomodoro</div>;
 }
