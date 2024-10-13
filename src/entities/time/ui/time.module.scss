@@ -34,10 +34,26 @@
         background-color: var(--color-light-100);
       }
     }
+
+    @media (width <= 767px) {
+      height: 90px;
+      font-size: 90px;
+
+      .dots {
+        .dot {
+          width: 10px;
+          height: 10px;
+        }
+      }
+    }
   }
 
   .date {
     font-size: 35px;
+
+    @media (width <= 767px) {
+      font-size: 25px;
+    }
   }
 }
 
