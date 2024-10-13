@@ -8,9 +8,6 @@ export function SoutheastArrowIcon(props: SVGProps<SVGSVGElement>) {
       height="1em"
       viewBox="0 0 512 512"
       {...props}
-      style={{
-        transform: "rotate(113deg)",
-      }}
     >
       <path
         fill="currentColor"
