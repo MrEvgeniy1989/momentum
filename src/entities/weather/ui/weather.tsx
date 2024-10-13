@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { type ReactNode, useEffect, useState } from "react";
-import { Bounce, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 import { PencilIcon } from "@/assets/icons/pencil-icon";
 import { SoutheastArrowIcon } from "@/assets/icons/southeast-arrow-icon";
@@ -27,7 +27,7 @@ import { EditLocationMenu } from "@/entities/weather/ui/edit-location-menu/edit-
 import s from "./weather.module.scss";
 
 type LocationInfo = {
-  accuracy: number;
+  accuracy?: number;
   altitude?: number | null;
   altitudeAccuracy?: number | null;
   heading?: number | null;
@@ -37,7 +37,6 @@ type LocationInfo = {
 };
 
 const defaultLocation: LocationInfo = {
-  accuracy: 46927.8,
   latitude: 45.039268,
   longitude: 38.987221,
 };
@@ -47,17 +46,7 @@ export function Weather() {
 
   useEffect(() => {
     if (!navigator.geolocation) {
-      toast.error("Геолокация не поддерживается данным браузером.", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+      toast.error("Geolocation is not supported by this browser.", { position: "top-center" });
       return;
     }
 
@@ -66,17 +55,7 @@ export function Weather() {
     };
 
     const errorFn = (res: GeolocationPositionError) => {
-      toast.error(res.message, {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-      });
+      toast.error(res.message, { position: "top-center" });
     };
 
     navigator.geolocation.getCurrentPosition(successFn, errorFn);
@@ -140,6 +119,10 @@ export function Weather() {
 
   const { description, icon } = weatherCode ? weatherConditions[weatherCode] || defaultWeather : defaultWeather;
 
+  const onCLickEditCityHandler = () => {
+    toast.warn("Данная функция находится в разработке");
+  };
+
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -163,20 +146,12 @@ export function Weather() {
                 <div className={s.locationWrapper}>
                   <div className={s.location}>{city}</div>
                   <div className={s.pencilIconWrapper}>
-                    <PencilIcon className={s.pencilIcon} />
+                    <PencilIcon className={s.pencilIcon} onClick={onCLickEditCityHandler} />
                   </div>
                 </div>
                 <div className={s.conditions}>{description}</div>
               </div>
-              <input type="text" list="mycoollist" />
-              <datalist id="mycoollist">
-                <option>i want to kill you</option>
-                <option>i will kill you</option>
-                <option>you will die</option>
-                <option>i will be killed</option>
-                <option>i will be dead</option>
-              </datalist>
-              <EditLocationMenu />
+              <EditLocationMenu onCLickEditCityHandler={onCLickEditCityHandler} />
             </div>
             <div className={s.mainBody}>
               <div className={s.mainBodyTemperatureBlock}>

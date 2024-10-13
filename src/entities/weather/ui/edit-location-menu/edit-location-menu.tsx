@@ -6,7 +6,11 @@ import {
 } from "@/common/components/ui/dropdown";
 import s from "@/entities/weather/ui/edit-location-menu/edit-location-menu.module.scss";
 
-export function EditLocationMenu() {
+type EditLocationMenuProps = {
+  onCLickEditCityHandler: () => void;
+};
+
+export function EditLocationMenu({ onCLickEditCityHandler }: EditLocationMenuProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -15,7 +19,7 @@ export function EditLocationMenu() {
 
       <DropdownMenuContent className={s.dropdownEditLocationContent}>
         <DropdownMenuItem>
-          <button type="button" className={s.editLocationButton}>Edit Location</button>
+          <button type="button" className={s.editLocationButton} onClick={onCLickEditCityHandler}>Edit Location</button>
         </DropdownMenuItem>
 
       </DropdownMenuContent>
