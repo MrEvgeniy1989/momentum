@@ -8,6 +8,17 @@ type NominatimResponse = {
   };
 };
 
+type WeatherData = {
+  current: {
+    temperature_2m: number;
+    apparent_temperature: number;
+    precipitation: number;
+    wind_speed_10m: number;
+    wind_direction_10m: number;
+    weather_code: number;
+  };
+};
+
 export const weatherApi = {
   async getCityByCoordinates(latitude: number, longitude: number) {
     const response = await axios.get<NominatimResponse>("https://nominatim.openstreetmap.org/reverse", {
@@ -30,7 +41,7 @@ export const weatherApi = {
   },
 
   async fetchWeatherByCoords(latitude: number, longitude: number) {
-    const response = await axios.get(`${BASE_URL}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m`);
+    const response = await axios.get<WeatherData>(`${BASE_URL}?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m`);
     return response.data;
   },
 };

@@ -1,0 +1,25 @@
+.temperatureBlock {
+  display: flex;
+  column-gap: 3px;
+  align-items: center;
+  justify-content: center;
+
+  margin: -5px;
+
+  white-space: nowrap;
+
+  & svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .temperature {
+    display: block;
+    font-size: 26px;
+  }
+}
+
+.location {
+  font-size: 13px;
+}
+
