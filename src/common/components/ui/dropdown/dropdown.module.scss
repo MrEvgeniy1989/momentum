@@ -50,11 +50,11 @@
   border: 1px solid var(--color-dark-500);
   border-radius: 4px;
 
-  &[data-state='open'] {
+  &[data-state="open"] {
     animation: fade-in 300ms linear;
   }
 
-  &[data-state='closed'] {
+  &[data-state="closed"] {
     animation: fade-out 300ms linear;
   }
 
